@@ -1,0 +1,31 @@
+[
+    {
+        "database": "postgres",
+        "index": "books",
+        "nodes": {
+            "table": "books",
+            "columns": [
+                "isbn",
+                "title",
+                "description"
+            ],
+            "children": [
+                {
+                    "table": "authors",
+                    "columns": [
+                        "id",
+                        "name"
+                    ],
+                    "label": "authors",
+                    "relationship": {
+                        "type": "one_to_many",
+                        "variant": "object",
+                        "through_tables": [
+                            "book_authors"
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+]

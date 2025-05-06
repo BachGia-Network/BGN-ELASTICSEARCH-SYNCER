@@ -1,0 +1,62 @@
+[
+    {
+        "database": "postgres",
+        "index": "products",
+        "nodes": {
+            "table": "products",
+            "schema": "public",
+            "columns": [
+                "id",
+                "name"
+            ],
+            "children": [
+                {
+                    "table": "categories",
+                    "schema": "public",
+                    "columns": [
+                        "id",
+                        "name",
+                        "parent_id"
+                    ],
+                    "label": "categories",
+                    "relationship": {
+                        "type": "one_to_many",
+                        "variant": "object",
+                        "through_tables": [
+                            "product_categories"
+                        ]
+                    }
+                },
+                {
+                    "table": "product_variants",
+                    "schema": "public",
+                    "columns": [
+                        "id",
+                        "product_id",
+                        "name"
+                    ],
+                    "label": "variants",
+                    "relationship": {
+                        "type": "one_to_many",
+                        "variant": "object"
+                    }
+                },
+                {
+                    "table": "product_attributes",
+                    "schema": "public",
+                    "columns": [
+                        "id",
+                        "product_id",
+                        "name",
+                        "value"
+                    ],
+                    "label": "attributes",
+                    "relationship": {
+                        "type": "one_to_many",
+                        "variant": "object"
+                    }
+                }
+            ]
+        }
+    }
+]
